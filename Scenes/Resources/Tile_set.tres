@@ -1,9 +1,9 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dgnlw4oxwgme1"]
 
-[ext_resource type="Texture2D" uid="uid://lkuvps6xf51l" path="res://Scenes/Assets/Environment/tilemap_packed.png" id="1_rv3rb"]
+[ext_resource type="Texture2D" uid="uid://lkuvps6xf51l" path="res://Assets/Environment/tilemap_packed.png" id="1_5hspl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hcrwo"]
-texture = ExtResource("1_rv3rb")
+texture = ExtResource("1_5hspl")
 0:4/0 = 0
 0:4/0/terrain_set = 0
 0:4/0/terrain = 0
