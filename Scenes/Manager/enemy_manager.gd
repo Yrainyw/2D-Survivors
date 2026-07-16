@@ -4,6 +4,7 @@ const SPAWN_RADIUS = 375
 
 @export var basic_enemy_scene: PackedScene
 
+
 func _ready():
 	$Timer.timeout.connect(on_timer_timeout)
 
