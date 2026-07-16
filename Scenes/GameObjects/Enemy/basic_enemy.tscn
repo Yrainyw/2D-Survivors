@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://da8d2a2d53s7u"]
 
-[ext_resource type="Script" path="res://Scenes/Enemy/basic_enemy.gd" id="1_jn1uh"]
-[ext_resource type="Texture2D" uid="uid://c3sjorifdgyy8" path="res://Scenes/Enemy/rat_grey.png" id="2_y15rp"]
+[ext_resource type="Script" path="res://Scenes/GameObjects/Enemy/basic_enemy.gd" id="1_jn1uh"]
+[ext_resource type="Texture2D" uid="uid://c3sjorifdgyy8" path="res://Scenes/GameObjects/Enemy/rat_grey.png" id="2_y15rp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_747od"]
 radius = 12.0
