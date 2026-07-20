@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const MAX_SPEED = 50
 
-@onready var health_component: HealthComponent = $HealthComponent
+@onready var health_component : HealthComponent = $HealthComponent
 
 
 func _process(_delta):
