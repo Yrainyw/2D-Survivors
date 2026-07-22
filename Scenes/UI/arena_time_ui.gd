@@ -9,6 +9,7 @@ func _process(delta):
 		return
 		
 	var time_elasped = arena_timer_manager.get_time_elapsed()
+	
 	label.text = format_seconds_to_string(time_elasped)
 
 
