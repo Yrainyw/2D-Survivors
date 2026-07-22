@@ -6,4 +6,5 @@
 script = ExtResource("1_688an")
 id = "sword_rate"
 name = "剑刃迅捷"
+max_quantity = 5
 description = "剑击速度 +10%"
