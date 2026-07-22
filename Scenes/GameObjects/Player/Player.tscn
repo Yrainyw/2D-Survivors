@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bo1vhskiccjol"]
+[gd_scene load_steps=10 format=3 uid="uid://bo1vhskiccjol"]
 
 [ext_resource type="Script" path="res://Scenes/GameObjects/Player/Player.gd" id="1_y5fe3"]
 [ext_resource type="PackedScene" uid="uid://dspgo4vh0nj1w" path="res://Scenes/Ability/SwordAbilityController/sword_ability_controller.tscn" id="2_70s6x"]
 [ext_resource type="Texture2D" uid="uid://bwudlkynnv7qd" path="res://Scenes/GameObjects/Player/player0.png" id="2_ojlgi"]
 [ext_resource type="PackedScene" uid="uid://cjfrvonv6gogv" path="res://Scenes/Component/health_component.tscn" id="2_yimr2"]
-[ext_resource type="PackedScene" uid="uid://01b80caja0xu" path="res://Scenes/Ability/AxeAbilityController/axe_ability_controller.tscn" id="4_5orl1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nenr8"]
 bg_color = Color(0.247059, 0.14902, 0.192157, 1)
@@ -37,11 +36,9 @@ one_shot = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_yimr2")]
 
-[node name="AbilityManager" type="Node" parent="."]
+[node name="Abilities" type="Node" parent="."]
 
-[node name="SwordAbilityController" parent="AbilityManager" instance=ExtResource("2_70s6x")]
-
-[node name="AxeAbilityController" parent="AbilityManager" instance=ExtResource("4_5orl1")]
+[node name="SwordAbilityController" parent="Abilities" instance=ExtResource("2_70s6x")]
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(32, 6)
