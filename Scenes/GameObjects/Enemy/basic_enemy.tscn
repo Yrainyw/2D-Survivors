@@ -1,11 +1,39 @@
-[gd_scene load_steps=12 format=3 uid="uid://da8d2a2d53s7u"]
+[gd_scene load_steps=13 format=3 uid="uid://da8d2a2d53s7u"]
 
 [ext_resource type="Script" path="res://Scenes/GameObjects/Enemy/basic_enemy.gd" id="1_jn1uh"]
+[ext_resource type="PackedScene" uid="uid://c8dhm6anj083r" path="res://Scenes/Component/velocity_component.tscn" id="2_q47es"]
 [ext_resource type="PackedScene" uid="uid://cjfrvonv6gogv" path="res://Scenes/Component/health_component.tscn" id="2_tncq6"]
 [ext_resource type="Texture2D" uid="uid://c3sjorifdgyy8" path="res://Scenes/GameObjects/Enemy/rat_grey.png" id="2_y15rp"]
 [ext_resource type="PackedScene" uid="uid://cfba1qi5v101y" path="res://Scenes/Component/vial_drop_component.tscn" id="3_uac7y"]
 [ext_resource type="PackedScene" uid="uid://ccnfqwpyghlle" path="res://Scenes/Component/death_component.tscn" id="4_hb40d"]
 [ext_resource type="PackedScene" uid="uid://ba3jv83p68fk5" path="res://Scenes/Component/hurtbox_component.tscn" id="4_sl53u"]
+
+[sub_resource type="Animation" id="Animation_qx5uo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_osmxh"]
 resource_name = "walk"
@@ -36,33 +64,6 @@ tracks/1/keys = {
 "values": [0.174533, -0.174533, 0.174533, -0.174533]
 }
 
-[sub_resource type="Animation" id="Animation_qx5uo"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals/Sprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -4)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Visuals/Sprite2D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6eonq"]
 _data = {
 "RESET": SubResource("Animation_qx5uo"),
@@ -90,7 +91,10 @@ libraries = {
 [node name="HealthComponent" parent="." instance=ExtResource("2_tncq6")]
 
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_uac7y")]
+drop_percent = 0.35
 health_component = NodePath("../HealthComponent")
+
+[node name="VelocityComponent" parent="." instance=ExtResource("2_q47es")]
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("4_hb40d")]
 health_component = NodePath("../HealthComponent")
