@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://lxfb3a6ynqib"]
 
-[ext_resource type="Script" path="res://Scenes/Resources/Upgrades/ability_upgrade.gd" id="1_688an"]
+[ext_resource type="Script" path="res://Resources/Upgrades/ability_upgrade.gd" id="1_688an"]
 
 [resource]
 script = ExtResource("1_688an")
 id = "sword_rate"
-name = "剑刃迅捷"
+name = "Blade Swiftness"
 max_quantity = 5
-description = "剑击速度 +10%"
+description = "Sword Attack Speed +10%"
