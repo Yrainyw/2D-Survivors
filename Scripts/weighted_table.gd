@@ -11,7 +11,7 @@ func add_item(item, weight : int):
 
 func pick_item():
 	var chosen_weight = randi_range(1, weight_sum)
-	var iteration_sum = 0   # 改成局部变量，每次调用都重新从0开始
+	var iteration_sum = 0  
 	
 	for item in items:
 		iteration_sum += item["weight"]
