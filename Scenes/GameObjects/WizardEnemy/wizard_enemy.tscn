@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dccp43kd7tcw5"]
+[gd_scene load_steps=16 format=3 uid="uid://dccp43kd7tcw5"]
 
 [ext_resource type="Texture2D" uid="uid://b4vnvhcwkpk4" path="res://Scenes/GameObjects/WizardEnemy/wizard_enemy.png" id="1_7gyk4"]
 [ext_resource type="Script" path="res://Scenes/GameObjects/WizardEnemy/wizard_enemy.gd" id="1_80qnd"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://c8dhm6anj083r" path="res://Scenes/Component/velocity_component.tscn" id="2_8s8m2"]
 [ext_resource type="PackedScene" uid="uid://cfba1qi5v101y" path="res://Scenes/Component/vial_drop_component.tscn" id="3_tkipj"]
 [ext_resource type="PackedScene" uid="uid://ba3jv83p68fk5" path="res://Scenes/Component/hurtbox_component.tscn" id="4_j244p"]
+[ext_resource type="PackedScene" uid="uid://cbqhej881g3mi" path="res://Scenes/Component/hit_flash_component.tscn" id="4_vtnxh"]
+[ext_resource type="Shader" path="res://Scenes/Component/hit_flash_component.gdshader" id="5_ocrh0"]
 
 [sub_resource type="Animation" id="Animation_d01ca"]
 length = 0.001
@@ -112,6 +114,11 @@ _data = {
 "walk": SubResource("Animation_k1eff")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tmbax"]
+resource_local_to_scene = true
+shader = ExtResource("5_ocrh0")
+shader_parameter/lerp_percent = null
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_dj41r"]
 radius = 8.0
 
@@ -134,6 +141,11 @@ max_health = 30.0
 
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_tkipj")]
 health_component = NodePath("../HealthComponent")
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("4_vtnxh")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
+hit_flash_material = SubResource("ShaderMaterial_tmbax")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("2_8s8m2")]
 max_speed = 60
