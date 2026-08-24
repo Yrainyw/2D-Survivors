@@ -7,6 +7,7 @@ const MAX_RADIUS = 100
 var base_rotation = Vector2.RIGHT
 
 
+# 设置随机方向并开始斧头动画
 func _ready():
 	base_rotation = Vector2.RIGHT.rotated(randf_range(0, TAU))
 	
@@ -16,6 +17,7 @@ func _ready():
 	tween.tween_callback(queue_free)
 
 
+# 让斧头旋转并逐渐远离玩家
 func tween_method(rotations : float):
 	var percent = rotations / 2
 	var current_radius = percent * MAX_RADIUS

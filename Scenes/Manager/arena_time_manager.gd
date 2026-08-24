@@ -11,10 +11,12 @@ const DIFFICULTY_INTERVAL = 5
 var arena_difficulty = 0
 
 
+# 监听游戏计时结束
 func _ready():
 	timer.timeout.connect(on_timer_timeout)
 
 
+# 每隔一段时间提升游戏难度
 func _process(delta):
 	var next_time_target = timer.wait_time - ((arena_difficulty + 1) * DIFFICULTY_INTERVAL)
 	
@@ -23,10 +25,12 @@ func _process(delta):
 		arena_difficulty_increased.emit(arena_difficulty)
 
 
+# 返回游戏已经经过的时间
 func get_time_elapsed():
 	return timer.wait_time - timer.time_left
 
 
+# 时间结束后显示结束界面
 func on_timer_timeout():
 	var end_screen_instance = end_screen_scene.instantiate()
 	

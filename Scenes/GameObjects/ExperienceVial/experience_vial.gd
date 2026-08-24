@@ -4,10 +4,12 @@ extends Node2D
 @onready var sprite = $Sprite2D
 
 
+# 监听玩家进入拾取范围
 func _ready():
 	$Area2D.area_entered.connect(on_area_entered)
 
 
+# 让经验瓶逐渐飞向玩家
 func tween_collect(percent : float, start_position : Vector2):
 	var player = get_tree().get_first_node_in_group("player")
 	
@@ -22,15 +24,18 @@ func tween_collect(percent : float, start_position : Vector2):
 	rotation = lerp_angle(rotation, target_rotation, 1 - exp(-2 * get_process_delta_time()))
 
 
+# 增加经验并删除经验瓶
 func collect():
 	GameEvents.emit_experience_vial_collected(1)
 	queue_free()
 
 
+# 关闭碰撞，防止被重复拾取
 func disable_collision():
 	collision_shape_2d.disabled = true
 
 
+# 玩家碰到经验瓶后播放收集动画
 func on_area_entered(other_area : Area2D):
 	Callable(disable_collision).call_deferred()
 	

@@ -13,6 +13,7 @@ const ACCELERATION_SMOOTHING = 25
 var number_colliding_bodies = 0
 
 
+# 连接玩家需要使用的信号
 func _ready():
 	$CollisionArea2D.body_entered.connect(on_body_entered)
 	$CollisionArea2D.body_exited.connect(on_body_exited)
@@ -22,6 +23,7 @@ func _ready():
 	update_health_display()
 
 
+# 根据玩家输入移动并播放动画
 func _process(delta):
 	var movement_vector = get_movement_vector()
 	var direction = movement_vector.normalized()
@@ -35,12 +37,14 @@ func _process(delta):
 	else:
 		animation_player.play("RESET")
 	
+#	根据移动方向翻转角色
 	var move_sign = sign(movement_vector.x)
 	
 	if move_sign != 0:
 		visuals.scale = Vector2(move_sign, 1)
 
 
+# 获取玩家的移动输入
 func get_movement_vector():
 	var x_movement = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	var y_movement = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
@@ -48,6 +52,7 @@ func get_movement_vector():
 	return Vector2(x_movement, y_movement)
 
 
+# 接触敌人时按固定间隔受到伤害
 func check_deal_damage():
 	if number_colliding_bodies == 0 || !damage_interval_timer.is_stopped():
 		return
@@ -56,6 +61,7 @@ func check_deal_damage():
 	damage_interval_timer.start()
 
 
+# 更新生命条
 func update_health_display():
 	health_bar.value = health_component.get_health_percent()
 
@@ -77,6 +83,7 @@ func on_health_changed():
 	update_health_display()
 
 
+# 获得新能力时添加对应的能力控制器
 func on_ability_upgrade_added(abiliy_upgrade : AbilityUpgrade, current_upgrade : Dictionary):
 	if not abiliy_upgrade is Ability:
 		return

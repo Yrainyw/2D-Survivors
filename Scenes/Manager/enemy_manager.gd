@@ -12,6 +12,7 @@ var base_spawn_time = 0
 var enemy_table = WeightedTable.new()
 
 
+# 设置初始敌人并连接需要的信号
 func _ready():
 	enemy_table.add_item(basic_enemy_scene, 10)
 	base_spawn_time = timer.wait_time
@@ -19,6 +20,7 @@ func _ready():
 	arena_time_manager.arena_difficulty_increased.connect(on_arena_difficulty_increased)
 
 
+# 在玩家周围寻找合适的生成位置
 func get_spawn_position():
 	var player = get_tree().get_first_node_in_group("player") as Node2D
 	
@@ -28,6 +30,7 @@ func get_spawn_position():
 	var spawn_position = Vector2.ZERO
 	var random_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
 	
+#	最多尝试四个方向
 	for i in 4:
 		spawn_position = player.global_position + (random_direction * SPAWN_RADIUS)
 		
@@ -41,6 +44,7 @@ func get_spawn_position():
 	return spawn_position
 
 
+# 计时结束后随机生成一个敌人
 func on_timer_timeout():
 	timer.start()
 	
@@ -57,6 +61,7 @@ func on_timer_timeout():
 	enemy.global_position = get_spawn_position()
 
 
+# 难度提升时加快生成速度并加入新敌人
 func on_arena_difficulty_increased(arena_difficulty : int):
 	var time_off = (.1 / 12) * arena_difficulty
 	

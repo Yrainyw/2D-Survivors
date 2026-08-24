@@ -11,6 +11,7 @@ func _ready():
 	get_tree().paused = true
 
 
+# 根据升级数据创建卡片
 func set_ability_upgrades(upgrades : Array[AbilityUpgrade]):
 	for upgrade in upgrades:
 		var card_instance = upgrade_card_scene.instantiate()
@@ -20,6 +21,7 @@ func set_ability_upgrades(upgrades : Array[AbilityUpgrade]):
 		card_instance.selected.connect(on_upgrade_selected.bind(upgrade))
 
 
+# 选择升级后恢复游戏并关闭界面
 func on_upgrade_selected(upgrade : AbilityUpgrade):
 	upgrade_selected.emit(upgrade)
 	get_tree().paused = false
