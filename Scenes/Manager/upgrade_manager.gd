@@ -55,5 +55,6 @@ func on_level_up(current_level : int):
 	
 	add_child(upgrade_screen_instance)
 	var chosen_upgrades = pick_upgrades()
+	
 	upgrade_screen_instance.set_ability_upgrades(chosen_upgrades as Array[AbilityUpgrade])
 	upgrade_screen_instance.upgrade_selected.connect(on_upgrade_selected)
