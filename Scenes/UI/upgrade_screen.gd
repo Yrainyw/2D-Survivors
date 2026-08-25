@@ -13,12 +13,16 @@ func _ready():
 
 # 根据升级数据创建卡片
 func set_ability_upgrades(upgrades : Array[AbilityUpgrade]):
+	var delay = 0
+	
 	for upgrade in upgrades:
 		var card_instance = upgrade_card_scene.instantiate()
 		
 		card_container.add_child(card_instance)
 		card_instance.set_ability_upgrade(upgrade)
+		card_instance.play_in(delay)
 		card_instance.selected.connect(on_upgrade_selected.bind(upgrade))
+		delay += .2
 
 
 # 选择升级后恢复游戏并关闭界面
