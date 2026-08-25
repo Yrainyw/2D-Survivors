@@ -133,9 +133,9 @@ one_shot = true
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(32, 6)
-offset_left = -16.0
+offset_left = -17.0
 offset_top = -25.0
-offset_right = 16.0
+offset_right = 15.0
 offset_bottom = -19.0
 pivot_offset = Vector2(16, 3)
 theme_override_styles/background = SubResource("StyleBoxFlat_nenr8")
