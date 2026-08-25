@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bo1vhskiccjol"]
+[gd_scene load_steps=14 format=3 uid="uid://bo1vhskiccjol"]
 
 [ext_resource type="Script" path="res://Scenes/GameObjects/Player/Player.gd" id="1_y5fe3"]
 [ext_resource type="PackedScene" uid="uid://dspgo4vh0nj1w" path="res://Scenes/Ability/SwordAbilityController/sword_ability_controller.tscn" id="2_70s6x"]
 [ext_resource type="Texture2D" uid="uid://bwudlkynnv7qd" path="res://Scenes/GameObjects/Player/player0.png" id="2_ojlgi"]
+[ext_resource type="PackedScene" uid="uid://c8dhm6anj083r" path="res://Scenes/Component/velocity_component.tscn" id="2_sx2oe"]
 [ext_resource type="PackedScene" uid="uid://cjfrvonv6gogv" path="res://Scenes/Component/health_component.tscn" id="2_yimr2"]
 
 [sub_resource type="Animation" id="Animation_uun3d"]
@@ -120,6 +121,10 @@ script = ExtResource("1_y5fe3")
 libraries = {
 "": SubResource("AnimationLibrary_4xo3m")
 }
+
+[node name="VelocityComponent" parent="." instance=ExtResource("2_sx2oe")]
+max_speed = 90
+acceleration = 25.0
 
 [node name="DamageIntervalTimer" type="Timer" parent="."]
 wait_time = 0.5
