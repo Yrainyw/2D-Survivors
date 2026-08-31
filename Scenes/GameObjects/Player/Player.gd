@@ -80,6 +80,7 @@ func on_damage_interval_timer_timeout():
 func on_health_changed():
 	GameEvents.emit_player_damage()
 	update_health_display()
+	$HitRandomStreamPlayer.play_random()
 
 
 # 获得新能力时添加对应的能力控制器

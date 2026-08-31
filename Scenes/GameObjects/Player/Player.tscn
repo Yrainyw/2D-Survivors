@@ -1,10 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://bo1vhskiccjol"]
+[gd_scene load_steps=20 format=3 uid="uid://bo1vhskiccjol"]
 
 [ext_resource type="Script" path="res://Scenes/GameObjects/Player/Player.gd" id="1_y5fe3"]
 [ext_resource type="PackedScene" uid="uid://dspgo4vh0nj1w" path="res://Scenes/Ability/SwordAbilityController/sword_ability_controller.tscn" id="2_70s6x"]
 [ext_resource type="Texture2D" uid="uid://bwudlkynnv7qd" path="res://Scenes/GameObjects/Player/player0.png" id="2_ojlgi"]
 [ext_resource type="PackedScene" uid="uid://c8dhm6anj083r" path="res://Scenes/Component/velocity_component.tscn" id="2_sx2oe"]
 [ext_resource type="PackedScene" uid="uid://cjfrvonv6gogv" path="res://Scenes/Component/health_component.tscn" id="2_yimr2"]
+[ext_resource type="PackedScene" uid="uid://pbr0w053dulf" path="res://Scenes/Component/random_stream_player_2d_component.tscn" id="5_xoknn"]
+[ext_resource type="AudioStream" uid="uid://dw3hck2sar4p2" path="res://Assets/Audio/impactMining_000.ogg" id="6_37njb"]
+[ext_resource type="AudioStream" uid="uid://u138r15efwd7" path="res://Assets/Audio/impactMining_001.ogg" id="7_mk1jv"]
+[ext_resource type="AudioStream" uid="uid://b6q3w8bbmg53i" path="res://Assets/Audio/impactMining_002.ogg" id="8_rtbxw"]
+[ext_resource type="AudioStream" uid="uid://b6qwmkw6pg3k6" path="res://Assets/Audio/impactMining_003.ogg" id="9_byetn"]
+[ext_resource type="AudioStream" uid="uid://b1ugtrh7wvole" path="res://Assets/Audio/impactMining_004.ogg" id="10_sd8pk"]
 
 [sub_resource type="Animation" id="Animation_uun3d"]
 length = 0.001
@@ -135,6 +141,9 @@ one_shot = true
 [node name="Abilities" type="Node" parent="."]
 
 [node name="SwordAbilityController" parent="Abilities" instance=ExtResource("2_70s6x")]
+
+[node name="HitRandomStreamPlayer" parent="." instance=ExtResource("5_xoknn")]
+streams = Array[AudioStream]([ExtResource("6_37njb"), ExtResource("7_mk1jv"), ExtResource("8_rtbxw"), ExtResource("9_byetn"), ExtResource("10_sd8pk")])
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(32, 6)
