@@ -22,6 +22,14 @@ func _ready():
 func set_defeat():
 	$%TitleLabel.text = "LOST"
 	$%DescriptionLabel.text = "You were defeated. Better luck next time!"
+	play_jingle(true)
+
+
+func play_jingle(defeat : bool = false):
+	if defeat:
+		$DefeatStreamPlayer.play()
+	else:
+		$VictoryStreamPlayer.play()
 
 
 # 重新开始游戏
