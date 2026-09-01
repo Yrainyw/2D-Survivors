@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://o6tlba01uypw"]
+[gd_scene load_steps=5 format=3 uid="uid://o6tlba01uypw"]
 
 [ext_resource type="Script" path="res://Scenes/UI/options_menu.gd" id="1_n5hk1"]
 [ext_resource type="TileSet" uid="uid://dgnlw4oxwgme1" path="res://Resources/Tile_set.tres" id="2_uwvo7"]
+[ext_resource type="PackedScene" uid="uid://djcee7yvkg8q2" path="res://Scenes/UI/vignettes.tscn" id="2_yg2pu"]
 [ext_resource type="PackedScene" uid="uid://cajykvtrp3ka6" path="res://Scenes/UI/sound_button.tscn" id="3_3nskd"]
 
 [node name="OptionsMenu" type="CanvasLayer"]
@@ -53,6 +54,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/SfxOptionContainer"]
 layout_mode = 2
+theme_type_variation = &"BlueOutlineLabel"
 text = "SFX Volumn"
 
 [node name="SfxSlider" type="HSlider" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/SfxOptionContainer"]
@@ -66,6 +68,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MusicOptionContainer"]
 layout_mode = 2
+theme_type_variation = &"BlueOutlineLabel"
 text = "Music Volumn"
 
 [node name="MusicSlider" type="HSlider" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MusicOptionContainer"]
@@ -79,6 +82,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/WindowOptionContainer"]
 layout_mode = 2
+theme_type_variation = &"BlueOutlineLabel"
 text = "Window Mode"
 
 [node name="WindowButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/WindowOptionContainer" instance=ExtResource("3_3nskd")]
@@ -93,3 +97,6 @@ custom_minimum_size = Vector2(50, 2.08165e-12)
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Back"
+
+[node name="Vignettes" parent="." instance=ExtResource("2_yg2pu")]
+layer = 2
