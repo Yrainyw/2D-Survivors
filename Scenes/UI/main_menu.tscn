@@ -58,3 +58,4 @@ layout_mode = 2
 text = "Quit"
 
 [node name="Vignettes" parent="." instance=ExtResource("2_eukj6")]
+layer = 2
