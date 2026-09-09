@@ -5,6 +5,7 @@ extends PanelContainer
 @onready var progress_bar = $%ProgressBar
 @onready var purchase_button = $%PurchaseButton
 @onready var progress_label = %ProgressLabel
+@onready var count_label = %CountLabel
 
 var upgrade : MetaUpgrade
 
@@ -15,7 +16,7 @@ func _ready():
 
 
 # 显示升级的名称和说明
-func set_meta_upgrade(_upgrade : MetaUpgrade):
+func set_meta_upgrade(upgrade : MetaUpgrade):
 	self.upgrade = upgrade
 	name_label.text = upgrade.title
 	description_label.text = upgrade.description
@@ -23,13 +24,24 @@ func set_meta_upgrade(_upgrade : MetaUpgrade):
 
 
 func update_progress():
-	var currency = MetaProgression.save_data["meta_upgrade_currency"]
-	var percent = currency / upgrade.experience_cost
+	var current_quantity = 0
 	
-	percent = min(percent, 1)
+	if MetaProgression.save_data["meta_upgrades"].has(upgrade.id):
+		current_quantity = MetaProgression.save_data["meta_upgrades"][upgrade.id]["quantity"]
+	
+	var is_maxed = current_quantity >= upgrade.max_quantity
+	var currency = MetaProgression.save_data["meta_upgrade_currency"]
+	var percent = float(currency) / float(upgrade.experience_cost)
+	
+	percent = min(percent, 1.0)
 	progress_bar.value = percent
-	purchase_button.disabled = percent < 1
+	
+	if is_maxed:
+		purchase_button.text = "Max"
+	
+	purchase_button.disabled = percent < 1 || is_maxed
 	progress_label.text = str(currency) + "/" + str(upgrade.experience_cost)
+	count_label.text = "x%d" % current_quantity
 
 
 func select_card():

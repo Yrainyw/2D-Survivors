@@ -78,7 +78,7 @@ _data = {
 "walk": SubResource("Animation_osmxh")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_46l1v"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ulq8k"]
 resource_local_to_scene = true
 shader = ExtResource("6_j543q")
 shader_parameter/lerp_percent = null
@@ -110,7 +110,7 @@ health_component = NodePath("../HealthComponent")
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("4_yc1ds")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_46l1v")
+hit_flash_material = SubResource("ShaderMaterial_ulq8k")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("2_q47es")]
 
@@ -119,7 +119,6 @@ health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
 
 [node name="HitRandomAudioPlayerComponent" parent="." instance=ExtResource("2_j3q4v")]
-max_distance = 300.0
 streams = Array[AudioStream]([ExtResource("2_vjm4q"), ExtResource("4_87s3i"), ExtResource("5_vh3wq"), ExtResource("6_kqogf"), ExtResource("7_lhoe0")])
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_sl53u")]
