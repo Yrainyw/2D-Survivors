@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bdxpg80aoy527"]
+
+[ext_resource type="Script" path="res://Resources/Meta_upgrades/mata_upgrade.gd" id="1_kmj7u"]
+
+[resource]
+script = ExtResource("1_kmj7u")
+id = "experience_gain"
+max_quantity = 1
+title = "Increase Experience"
+description = "Increases experience drop chance by 10%"
