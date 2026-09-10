@@ -11,6 +11,7 @@ const SPAWN_RADIUS = 375
 
 var base_spawn_time = 0
 var enemy_table = WeightedTable.new()
+var number_to_spawn = 1
 
 
 # 设置初始敌人并连接需要的信号
@@ -55,12 +56,13 @@ func on_timer_timeout():
 	if player == null:
 		return
 	
-	var enemy_scene = enemy_table.pick_item()
-	var enemy = enemy_scene.instantiate() as Node2D
-	var entities_layer = get_tree().get_first_node_in_group("entities_layer")
+	for i in number_to_spawn:
+		var enemy_scene = enemy_table.pick_item()
+		var enemy = enemy_scene.instantiate() as Node2D
+		var entities_layer = get_tree().get_first_node_in_group("entities_layer")
 	
-	entities_layer.add_child(enemy)
-	enemy.global_position = get_spawn_position()
+		entities_layer.add_child(enemy)
+		enemy.global_position = get_spawn_position()
 
 
 # 难度提升时加快生成速度并加入新敌人
@@ -75,3 +77,5 @@ func on_arena_difficulty_increased(arena_difficulty : int):
 	elif arena_difficulty == 18:
 		enemy_table.add_item(bat_enemy_scene, 8)
 	
+	if (arena_difficulty % 6) == 0:
+		number_to_spawn += 1
