@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var arena_time_manager : Node
+
 @onready var velocity_component = $VelocityComponent
 @onready var damage_interval_timer = $DamageIntervalTimer
 @onready var health_component = $HealthComponent
@@ -14,10 +16,12 @@ var base_speed = 0
 
 # 连接玩家需要使用的信号
 func _ready():
+	arena_time_manager.arena_difficulty_increased.connect(on_arena_difficulty_increased)
 	base_speed = velocity_component.max_speed
 	$CollisionArea2D.body_entered.connect(on_body_entered)
 	$CollisionArea2D.body_exited.connect(on_body_exited)
 	damage_interval_timer.timeout.connect(on_damage_interval_timer_timeout)
+	health_component.health_decreased.connect(on_health_decreased)
 	health_component.health_changed.connect(on_health_changed)
 	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
 	update_health_display()
@@ -77,10 +81,13 @@ func on_damage_interval_timer_timeout():
 	check_deal_damage()
 
 
-func on_health_changed():
+func on_health_decreased():
 	GameEvents.emit_player_damage()
-	update_health_display()
 	$HitRandomStreamPlayer.play_random()
+
+
+func on_health_changed():
+	update_health_display()
 
 
 # 获得新能力时添加对应的能力控制器
@@ -89,3 +96,13 @@ func on_ability_upgrade_added(abiliy_upgrade : AbilityUpgrade, current_upgrades 
 		abilities.add_child(abiliy_upgrade.ability_controller_scene.instantiate())
 	elif abiliy_upgrade.id == "player_speed":
 		velocity_component.max_speed = base_speed + (base_speed * current_upgrades["player_speed"]["quantity"] * .1)
+
+
+func on_arena_difficulty_increased(difficulty : int):
+	var heal_regeneration_quantity = MetaProgression.get_upgrade_count("health_regeneration")
+	
+	if heal_regeneration_quantity > 0:
+		var is_thirty_second_interval = (difficulty % 6) == 0
+		
+		if is_thirty_second_interval:
+			health_component.heal(heal_regeneration_quantity)

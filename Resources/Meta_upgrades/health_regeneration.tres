@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MetaUpgrade" load_steps=2 format=3 uid="uid://cf7twj663vffi"]
+
+[ext_resource type="Script" path="res://Resources/Meta_upgrades/mata_upgrade.gd" id="1_dxg5f"]
+
+[resource]
+script = ExtResource("1_dxg5f")
+id = "health_regeneration"
+max_quantity = 3
+experience_cost = 100
+title = "Health Regen"
+description = "Regenerate 1 health per level"

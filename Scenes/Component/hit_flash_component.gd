@@ -9,12 +9,12 @@ var hit_flash_tween : Tween
 
 # 监听生命值变化并设置闪烁材质
 func _ready():
-	health_component.health_changed.connect(on_health_changed)
+	health_component.health_decreased.connect(on_health_decreased)
 	sprite.material = hit_flash_material
 
 
 # 受到伤害时播放闪白效果
-func on_health_changed():
+func on_health_decreased():
 #	停止上一次还未结束的动画
 	if hit_flash_tween != null && hit_flash_tween.is_valid():
 		hit_flash_tween.kill()
