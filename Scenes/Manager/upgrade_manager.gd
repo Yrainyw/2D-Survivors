@@ -12,11 +12,13 @@ var upgrade_axe_damage = preload("res://Resources/Upgrades/axe_damage.tres")
 var upgrade_sword_rate = preload("res://Resources/Upgrades/sword_rate.tres")
 var upgrade_sword_damage = preload("res://Resources/Upgrades/sword_damage.tres")
 var upgrade_player_speed = preload("res://Resources/Upgrades/player_speed.tres")
+var upgrade_anvil = preload("res://Resources/Upgrades/anvil.tres")
 
 
 func _ready():
 #	将初始升级加入升级池，数字 10 是抽到这个升级的权重
 	upgrade_pool.add_item(upgrade_axe, 10)
+	upgrade_pool.add_item(upgrade_anvil, 10)
 	upgrade_pool.add_item(upgrade_sword_rate, 10)
 	upgrade_pool.add_item(upgrade_sword_damage, 10)
 	upgrade_pool.add_item(upgrade_player_speed, 5)
